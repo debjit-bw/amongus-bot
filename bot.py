@@ -32,7 +32,7 @@ country_list = {'A': ['Afghanistan', 'Albania', 'Algeria', 'Andorra', 'Angola', 
 				'U': ['Uganda', 'Ukraine', 'Union of Soviet Socialist Republics*', 'United Arab Emirates, The', 'United Kingdom, The', 'Uruguay', 'Uzbekistan'],
 				'V': ['Vanuatu', 'Venezuela', 'Vietnam'],
 				'W': ['Württemberg*'],
-				'X': ['X'],
+				'X': ['Xinjiang'],
 				'Y': ['Yemen'],
 				'Z': ['Zambia', 'Zimbabwe']}
 
@@ -40,14 +40,14 @@ country_list = {'A': ['Afghanistan', 'Albania', 'Algeria', 'Andorra', 'Angola', 
 def textSave(text):
 	build = ".  \n".join(text)
 	text = build + ". I am repeating. " + build
-	tts = gTTS(text, lang='en-in')
+	tts = gTTS(text, lang='en-uk')
 	tts.save("res.mp3")
 
 def mes(text):
 	vc = []
-	if len(re.findall("^([A-Z|a-z]{5}[Q|q])", text))>0:
+	if len(re.findall("^([A-Z|a-z]{6})", text))>0:
 		res = 'Translating to Arion...'
-		for c in re.findall("^([A-Z|a-z]{5}[Q|q])", text)[0].upper():
+		for c in re.findall("^([A-Z|a-z]{6})", text)[0].upper():
 			country = random.choice(country_list[c])
 			res += f"\n{c}: {country}"
 			vc.append(country)
